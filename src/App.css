@@ -27,11 +27,10 @@
   position: absolute;
   top: 30px;
   left: 50px;
-  font-family: 'Dancing Script', cursive;
-  font-size: 25px;
-  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
   color: #000000;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   z-index: 10;
   cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
@@ -49,26 +48,32 @@
   text-align: center;
   z-index: 1;
   position: relative;
-  width: 800px;
-  height: 500px;
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  min-height: 300px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: visible; /* Ensure content doesn't get clipped */
 }
 
 /* Single large cloud shape with highly irregular edges */
 .cloud-shape {
   position: absolute;
-  width: 980px;
-  height: 460px;
+  width: 100%;
+  max-width: 980px;
+  height: 100%;
+  max-height: 460px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(100, 149, 237, 0.10);
+  background-color: rgba(100, 149, 237, 0.25);
   z-index: -1;
   border-radius: 31% 97% 42% 89% / 93% 29% 87% 37%;
-  box-shadow: 0 0 170px 80px rgba(100, 149, 237, 0.05);
+  box-shadow: 0 0 170px 80px rgba(100, 149, 237, 0.15);
   filter: blur(28px);
   animation: pulse 15s ease-in-out infinite;
   /* Add a subtle transform to make it asymmetrical */
@@ -83,7 +88,7 @@
   height: 88%;
   top: 5%;
   left: 9%;
-  background-color: rgba(100, 149, 237, 0.07);
+  background-color: rgba(100, 149, 237, 0.15);
   border-radius: 27% 73% 39% 91% / 67% 21% 94% 43%;
   filter: blur(35px);
   z-index: -1;
@@ -93,15 +98,15 @@
 @keyframes float-irregular {
   0% {
     transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: 0.7;
+    opacity: 0.8;
   }
   50% {
     transform: translateY(-10px) translateX(15px) rotate(1deg);
-    opacity: 0.9;
+    opacity: 1;
   }
   100% {
     transform: translateY(5px) translateX(-10px) rotate(-1deg);
-    opacity: 0.7;
+    opacity: 0.8;
   }
 }
 
@@ -109,7 +114,7 @@
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) rotate(3deg) skew(2deg, -1deg) scale(1);
-    opacity: 0.9;
+    opacity: 0.95;
   }
   50% {
     transform: translate(-50%, -50%) rotate(2deg) skew(1deg, -2deg) scale(1.03);
@@ -117,25 +122,27 @@
   }
   100% {
     transform: translate(-50%, -50%) rotate(3deg) skew(2deg, -1deg) scale(1);
-    opacity: 0.9;
+    opacity: 0.95;
   }
 }
 
 /* Text styling */
 .tagline {
-  font-family: 'Avenir';
-  font-size: 25px;
-  color: #2c3e50;
-  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.9), 0 3px 8px rgba(100, 149, 237, 0.4);
-  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 23px;
+  color: #1c1c1c;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.4), 0 3px 8px rgba(100, 149, 237, 0.4);
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0 20px;
   text-align: center;
   animation: fadeIn 1.5s ease-out;
   letter-spacing: 0.04em;
   transform: translateY(0);
-  line-height: 1.2;
+  line-height: 1.4;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 @keyframes fadeIn {
@@ -198,4 +205,204 @@
   transform: translateY(-2px);
 }
 
+/* 3D Boxes Loader */
+.boxes-container {
+  position: absolute;
+  width: 100%;
+  top: 6%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  opacity: 0.8;
+}
 
+.boxes {
+  --size: 32px;
+  --duration: 800ms;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 3);
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  margin-top: calc(var(--size) * 1.5 * -1);
+  transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+.boxes .box {
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.boxes .box:nth-child(1) {
+  transform: translate(100%, 0);
+  -webkit-animation: box1 var(--duration) linear infinite;
+  animation: box1 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(2) {
+  transform: translate(0, 100%);
+  -webkit-animation: box2 var(--duration) linear infinite;
+  animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(3) {
+  transform: translate(100%, 100%);
+  -webkit-animation: box3 var(--duration) linear infinite;
+  animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(4) {
+  transform: translate(200%, 0);
+  -webkit-animation: box4 var(--duration) linear infinite;
+  animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > div {
+  --background: #5C8DF6;
+  --top: auto;
+  --right: auto;
+  --bottom: auto;
+  --left: auto;
+  --translateZ: calc(var(--size) / 2);
+  --rotateY: 0deg;
+  --rotateX: 0deg;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  top: var(--top);
+  right: var(--right);
+  bottom: var(--bottom);
+  left: var(--left);
+  transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+  --top: 0;
+  --left: 0;
+}
+
+.boxes .box > div:nth-child(2) {
+  --background: #145af2;
+  --right: 0;
+  --rotateY: 90deg;
+}
+
+.boxes .box > div:nth-child(3) {
+  --background: #447cf5;
+  --rotateX: -90deg;
+}
+
+.boxes .box > div:nth-child(4) {
+  --background: #DBE3F4;
+  --top: 0;
+  --left: 0;
+  --translateZ: calc(var(--size) * 11 * -1);
+}
+
+@-webkit-keyframes box1 {
+  0%, 50% {
+    transform: translate(100%, 0);
+  }
+
+  100% {
+    transform: translate(200%, 0);
+  }
+}
+
+@keyframes box1 {
+  0%, 50% {
+    transform: translate(100%, 0);
+  }
+
+  100% {
+    transform: translate(200%, 0);
+  }
+}
+
+@-webkit-keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@-webkit-keyframes box3 {
+  0%, 50% {
+    transform: translate(100%, 100%);
+  }
+
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes box3 {
+  0%, 50% {
+    transform: translate(100%, 100%);
+  }
+
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@-webkit-keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+
+  50% {
+    transform: translate(200%, 100%);
+  }
+
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+@keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+
+  50% {
+    transform: translate(200%, 100%);
+  }
+
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+/* Simple design with no media queries */
+.cloud-shape {
+  max-width: 100%;
+}
