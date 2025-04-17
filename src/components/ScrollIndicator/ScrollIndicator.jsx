@@ -39,17 +39,11 @@ const ScrollIndicator = () => {
     window.addEventListener('wheel', startFadeOut, { once: true });
     window.addEventListener('touchmove', startFadeOut, { once: true });
 
-    // Also hide after 10 seconds as a fallback
-    const fallbackTimer = setTimeout(() => {
-      startFadeOut();
-    }, 10000);
-
     // Cleanup
     return () => {
       window.removeEventListener('scroll', startFadeOut);
       window.removeEventListener('wheel', startFadeOut);
       window.removeEventListener('touchmove', startFadeOut);
-      clearTimeout(fallbackTimer);
     };
   }, []);
 
