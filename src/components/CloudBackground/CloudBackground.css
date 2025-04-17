@@ -1,0 +1,71 @@
+/* Cloud shape styling */
+.cloud-shape {
+  position: absolute;
+  width: 100%;
+  max-width: 980px;
+  height: 100%;
+  max-height: 460px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(3deg) skew(2deg, -1deg);
+  background-color: rgba(100, 149, 237, 0.25);
+  z-index: -1;
+  border-radius: 31% 97% 42% 89% / 93% 29% 87% 37%;
+  box-shadow: 0 0 170px 80px rgba(100, 149, 237, 0.15);
+  filter: blur(28px);
+  animation: pulse 15s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+/* Animation for cloud */
+.cloud-shape.cloud-animate-in {
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+/* Add an additional layer for more irregularity */
+.cloud-shape::before {
+  content: '';
+  position: absolute;
+  width: 92%;
+  height: 88%;
+  top: 5%;
+  left: 9%;
+  background-color: rgba(100, 149, 237, 0.15);
+  border-radius: 27% 73% 39% 91% / 67% 21% 94% 43%;
+  filter: blur(35px);
+  z-index: -1;
+  animation: float-irregular 18s ease-in-out infinite alternate;
+}
+
+@keyframes float-irregular {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) translateX(15px) rotate(1deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(5px) translateX(-10px) rotate(-1deg);
+    opacity: 0.8;
+  }
+}
+
+/* Cloud animations */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) rotate(3deg) skew(2deg, -1deg) scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(2deg) skew(1deg, -2deg) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(3deg) skew(2deg, -1deg) scale(1);
+    opacity: 0.95;
+  }
+}
