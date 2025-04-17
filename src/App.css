@@ -174,9 +174,9 @@
   display: flex;
   gap: 20px;
   z-index: 10;
-  opacity: 0;
+  opacity: 1; /* Changed from 0 to make icons visible immediately */
   animation: fadeIn 1.5s ease-out forwards;
-  animation-delay: 1s;
+  animation-delay: 0.2s;
 }
 
 .social-icon {
@@ -193,10 +193,10 @@
 }
 
 .social-logo {
-  width: 20px;
-  height: 20px;
+  width: 24px; /* Increased size for better visibility */
+  height: 24px;
   object-fit: contain;
-  filter: opacity(0.7);
+  filter: opacity(0.8); /* Increased opacity for better visibility */
   transition: all 0.3s ease;
 }
 
@@ -209,13 +209,14 @@
 .boxes-container {
   position: absolute;
   width: 100%;
-  top: 6%;
+  top: 36%; /* Changed from 6% to position in the middle */
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
   opacity: 0.8;
+  transform: translateY(-100%); /* Move up to center better */
 }
 
 .boxes {
