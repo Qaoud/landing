@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
   window.scrollTo(0, 0);
 
   // Replace current history state to clear saved scroll position
-  if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
+  if (window.history.scrollRestoration) {
+    window.history.scrollRestoration = 'manual';
   }
-  history.replaceState(null, document.title, window.location.href);
+  window.history.replaceState(null, document.title, window.location.href);
 });
 
 // 3. Reset on window load
