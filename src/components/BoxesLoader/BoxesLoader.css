@@ -105,7 +105,7 @@
   --background: #DBE3F4;
   --top: 0;
   --left: 0;
-  --translateZ: calc(var(--size) * 11 * -1);
+  --translateZ: calc(var(--size) * 9 * -1);
 }
 
 @-webkit-keyframes box1 {

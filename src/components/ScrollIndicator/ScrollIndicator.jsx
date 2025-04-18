@@ -140,6 +140,7 @@ const ScrollIndicator = () => {
       className={`section-indicator ${fadeIn ? 'fade-in' : ''} ${fadeOut ? 'fade-out' : ''}`}
       id="scroll-indicator"
     >
+      <div className="scroll-text">Scroll for more</div>
       <div className="scroll-arrow">↓</div>
     </div>
   );
