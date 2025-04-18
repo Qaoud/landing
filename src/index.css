@@ -6,12 +6,16 @@
   box-sizing: border-box;
 }
 
-body {
+html {
+  scroll-behavior: auto !important; /* Prevent smooth scrolling that might cause delayed scrolling */
+  overflow-y: scroll; /* Ensure consistent scrollbar presence */
+}
+
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -19,4 +23,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
   color: #2c3e50;
+  /* Prevent any automatic scrolling */
+  scroll-padding-top: 0;
+  scroll-margin-top: 0;
+}
+
+#root {
+  height: 100%;
 }
